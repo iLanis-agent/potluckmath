@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Potluck math - coverage check, batch planner, drinks and ice</title>
+<style>
+  :root { --ink:#231208; --accent:#a34716; --paper:#fdf3ea; --card:#ffffff; --line:#eed3bd; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: Georgia, 'Times New Roman', serif; background:var(--paper); color:var(--ink); }
+  header { padding:2rem 1.25rem 1rem; max-width:960px; margin:0 auto; }
+  h1 { font-size:1.9rem; margin:0 0 .35rem; }
+  header p { margin:.25rem 0; color:#5c3a24; max-width:46rem; line-height:1.45; }
+  .norms { font-size:.9rem; color:#6d452c; margin-top:.6rem; }
+  main { max-width:960px; margin:0 auto; padding:0 1.25rem 3rem; display:grid; gap:1.25rem; }
+  @media (min-width:820px){ main { grid-template-columns:1fr 1fr 1fr; } }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:1.1rem 1.1rem 1.25rem; }
+  .card h2 { font-size:1.15rem; margin:.1rem 0 .5rem; }
+  .card p.desc { font-size:.9rem; color:#6d452c; margin:.2rem 0 .8rem; line-height:1.4; }
+  label { display:block; font-size:.85rem; margin:.55rem 0 .15rem; color:#4e3020; }
+  input, select { width:100%; padding:.45rem .5rem; font-size:1rem; border:1px solid var(--line); border-radius:6px; font-family:inherit; background:#fff; }
+  button { margin-top:.8rem; width:100%; padding:.55rem; font-size:1rem; font-family:inherit; background:var(--accent); color:#fff; border:0; border-radius:6px; cursor:pointer; }
+  button:hover { background:#843610; }
+  .out { margin-top:.9rem; font-size:.95rem; line-height:1.5; min-height:3.2rem; }
+  .out .big { font-size:1.35rem; font-weight:bold; }
+  .band { display:inline-block; margin-top:.35rem; padding:.15rem .55rem; border-radius:999px; background:#f8dfc9; color:#7e3411; font-size:.82rem; }
+  .err { color:#a02323; }
+  footer { max-width:960px; margin:0 auto; padding:0 1.25rem 2.5rem; font-size:.85rem; color:#87603f; }
+  a { color:var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Potluck math</h1>
+  <p>Eight guests, three bags of chips and one heroic casserole - will there be enough? Weigh what is coming against what the crowd eats, turn portions into batches, and stock the drinks. Exact arithmetic, every borrowed number labeled.</p>
+  <p class="norms">Labeled norms: appetite per guest 400/550/700 g (light/normal/hungry); per serving - main 350 g, side 150 g, salad 100 g, dessert 120 g; per batch - main 8, side 10, salad 12, dessert 12; drinks 1.5 and ice 150 g per guest per hour.</p>
+</header>
+<main>
+  <section class="card" id="cover">
+    <h2>Coverage check</h2>
+    <p class="desc">Guests and appetite against the dishes coming.</p>
+    <label for="c-g">Guests</label>
+    <input id="c-g" type="number" step="1" min="1" value="8">
+    <label for="c-a">Appetite</label>
+    <select id="c-a">
+      <option value="light">light</option>
+      <option value="normal" selected>normal</option>
+      <option value="hungry">hungry</option>
+    </select>
+    <label for="c-m">Mains coming (servings)</label>
+    <input id="c-m" type="number" step="1" min="0" value="4">
+    <label for="c-s">Sides coming (servings)</label>
+    <input id="c-s" type="number" step="1" min="0" value="4">
+    <label for="c-l">Salads coming (servings)</label>
+    <input id="c-l" type="number" step="1" min="0" value="2">
+    <label for="c-d">Desserts coming (servings)</label>
+    <input id="c-d" type="number" step="1" min="0" value="2">
+    <button id="c-go">Weigh the table</button>
+    <div class="out" id="c-out"></div>
+  </section>
+
+  <section class="card" id="batch">
+    <h2>Batch planner</h2>
+    <p class="desc">Portions you need become batches to cook, leftovers counted.</p>
+    <label for="b-p">Portions needed</label>
+    <input id="b-p" type="number" step="1" min="1" value="17">
+    <label for="b-d">Dish</label>
+    <select id="b-d">
+      <option value="main" selected>main</option>
+      <option value="side">side</option>
+      <option value="salad">salad</option>
+      <option value="dessert">dessert</option>
+    </select>
+    <button id="b-go">Plan the batches</button>
+    <div class="out" id="b-out"></div>
+  </section>
+
+  <section class="card" id="drink">
+    <h2>Drinks and ice</h2>
+    <p class="desc">Guests and hours become bottles to chill and ice to buy.</p>
+    <label for="d-g">Guests</label>
+    <input id="d-g" type="number" step="1" min="1" value="8">
+    <label for="d-h">Hours</label>
+    <input id="d-h" type="number" step="1" min="1" value="3">
+    <button id="d-go">Stock the cooler</button>
+    <div class="out" id="d-out"></div>
+  </section>
+</main>
+<footer>
+  Built by the app factory. <a href="index.html">About</a> &middot; <a href="https://github.com/iLanis-agent/potluckmath">Source</a>
+</footer>
+<script src="engine.js"></script>
+<script>
+(function () {
+  'use strict';
+  var M = window.PotluckMath;
+  function $(id){ return document.getElementById(id); }
+  function num(id){ return parseFloat($(id).value); }
+  function show(el, html){ el.classList.remove('err'); el.innerHTML = html; }
+  function fail(el, msg){ el.classList.add('err'); el.textContent = msg; }
+
+  $('c-go').addEventListener('click', function () {
+    var out = $('c-out');
+    try {
+      var r = M.coverage(num('c-g'), $('c-a').value, num('c-m'), num('c-s'), num('c-l'), num('c-d'));
+      show(out, '<span class="big">' + r.coverage_pct + '%</span> covered' +
+        '<br>' + r.brought_g + ' g coming for ' + r.needed_g + ' g of appetite' +
+        '<br><span class="band">' + r.verdict + '</span>');
+    } catch (e) { fail(out, e.message); }
+  });
+
+  $('b-go').addEventListener('click', function () {
+    var out = $('b-out');
+    try {
+      var r = M.batches(num('b-p'), $('b-d').value);
+      show(out, '<span class="big">' + r.batches + ' batch' + (r.batches === 1 ? '' : 'es') + '</span> to cook' +
+        '<br>' + r.servings + ' servings, ' + r.leftover + ' left over' +
+        '<br><span class="band">' + r.verdict + '</span>');
+    } catch (e) { fail(out, e.message); }
+  });
+
+  $('d-go').addEventListener('click', function () {
+    var out = $('d-out');
+    try {
+      var r = M.drinks(num('d-g'), num('d-h'));
+      show(out, '<span class="big">' + r.drinks + '</span> drinks' +
+        '<br>' + r.ice_g + ' g of ice' +
+        '<br><span class="band">' + r.verdict + '</span>');
+    } catch (e) { fail(out, e.message); }
+  });
+})();
+</script>
+</body>
+</html>
