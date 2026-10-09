@@ -1,0 +1,656 @@
+[
+ {
+  "card": "coverage",
+  "args": [
+   8,
+   "normal",
+   2,
+   3,
+   2,
+   2
+  ],
+  "expect": {
+   "needed_g": 4400,
+   "brought_g": 1590,
+   "coverage_pct": 36.1,
+   "verdict": "short - ask for another dish"
+  }
+ },
+ {
+  "card": "coverage",
+  "args": [
+   8,
+   "normal",
+   4,
+   4,
+   2,
+   2
+  ],
+  "expect": {
+   "needed_g": 4400,
+   "brought_g": 2440,
+   "coverage_pct": 55.5,
+   "verdict": "short - ask for another dish"
+  }
+ },
+ {
+  "card": "coverage",
+  "args": [
+   8,
+   "normal",
+   6,
+   5,
+   3,
+   3
+  ],
+  "expect": {
+   "needed_g": 4400,
+   "brought_g": 3510,
+   "coverage_pct": 79.8,
+   "verdict": "short - ask for another dish"
+  }
+ },
+ {
+  "card": "coverage",
+  "args": [
+   12,
+   "light",
+   2,
+   2,
+   2,
+   1
+  ],
+  "expect": {
+   "needed_g": 4800,
+   "brought_g": 1320,
+   "coverage_pct": 27.5,
+   "verdict": "short - ask for another dish"
+  }
+ },
+ {
+  "card": "coverage",
+  "args": [
+   12,
+   "hungry",
+   3,
+   3,
+   2,
+   2
+  ],
+  "expect": {
+   "needed_g": 8400,
+   "brought_g": 1940,
+   "coverage_pct": 23.1,
+   "verdict": "short - ask for another dish"
+  }
+ },
+ {
+  "card": "coverage",
+  "args": [
+   20,
+   "normal",
+   4,
+   4,
+   3,
+   2
+  ],
+  "expect": {
+   "needed_g": 11000,
+   "brought_g": 2540,
+   "coverage_pct": 23.1,
+   "verdict": "short - ask for another dish"
+  }
+ },
+ {
+  "card": "coverage",
+  "args": [
+   4,
+   "hungry",
+   1,
+   1,
+   1,
+   1
+  ],
+  "expect": {
+   "needed_g": 2800,
+   "brought_g": 720,
+   "coverage_pct": 25.7,
+   "verdict": "short - ask for another dish"
+  }
+ },
+ {
+  "card": "coverage",
+  "args": [
+   30,
+   "light",
+   6,
+   6,
+   4,
+   4
+  ],
+  "expect": {
+   "needed_g": 12000,
+   "brought_g": 3880,
+   "coverage_pct": 32.3,
+   "verdict": "short - ask for another dish"
+  }
+ },
+ {
+  "card": "coverage",
+  "args": [
+   8,
+   "normal",
+   0,
+   0,
+   0,
+   0
+  ],
+  "expect": {
+   "needed_g": 4400,
+   "brought_g": 0,
+   "coverage_pct": 0.0,
+   "verdict": "short - ask for another dish"
+  }
+ },
+ {
+  "card": "coverage",
+  "args": [
+   15,
+   "normal",
+   3,
+   4,
+   2,
+   3
+  ],
+  "expect": {
+   "needed_g": 8250,
+   "brought_g": 2210,
+   "coverage_pct": 26.8,
+   "verdict": "short - ask for another dish"
+  }
+ },
+ {
+  "card": "coverage",
+  "args": [
+   6,
+   "light",
+   1,
+   2,
+   1,
+   1
+  ],
+  "expect": {
+   "needed_g": 2400,
+   "brought_g": 870,
+   "coverage_pct": 36.3,
+   "verdict": "short - ask for another dish"
+  }
+ },
+ {
+  "card": "coverage",
+  "args": [
+   25,
+   "hungry",
+   8,
+   7,
+   5,
+   4
+  ],
+  "expect": {
+   "needed_g": 17500,
+   "brought_g": 4830,
+   "coverage_pct": 27.6,
+   "verdict": "short - ask for another dish"
+  }
+ },
+ {
+  "card": "coverage",
+  "args": [
+   0,
+   "normal",
+   2,
+   2,
+   2,
+   2
+  ],
+  "error": "positive"
+ },
+ {
+  "card": "coverage",
+  "args": [
+   8,
+   "normal",
+   -1,
+   0,
+   0,
+   0
+  ],
+  "error": "zero or more"
+ },
+ {
+  "card": "coverage",
+  "args": [
+   8,
+   "ravenous",
+   2,
+   2,
+   2,
+   2
+  ],
+  "error": "appetite is"
+ },
+ {
+  "card": "coverage",
+  "args": [
+   8,
+   "normal",
+   2.5,
+   0,
+   0,
+   0
+  ],
+  "error": "whole numbers"
+ },
+ {
+  "card": "coverage",
+  "args": [
+   150,
+   "normal",
+   2,
+   2,
+   2,
+   2
+  ],
+  "error": "under 101"
+ },
+ {
+  "card": "batches",
+  "args": [
+   8,
+   "main"
+  ],
+  "expect": {
+   "batches": 1,
+   "servings": 8,
+   "leftover": 0,
+   "verdict": "exact"
+  }
+ },
+ {
+  "card": "batches",
+  "args": [
+   9,
+   "main"
+  ],
+  "expect": {
+   "batches": 2,
+   "servings": 16,
+   "leftover": 7,
+   "verdict": "plenty of seconds"
+  }
+ },
+ {
+  "card": "batches",
+  "args": [
+   16,
+   "main"
+  ],
+  "expect": {
+   "batches": 2,
+   "servings": 16,
+   "leftover": 0,
+   "verdict": "exact"
+  }
+ },
+ {
+  "card": "batches",
+  "args": [
+   17,
+   "main"
+  ],
+  "expect": {
+   "batches": 3,
+   "servings": 24,
+   "leftover": 7,
+   "verdict": "plenty of seconds"
+  }
+ },
+ {
+  "card": "batches",
+  "args": [
+   10,
+   "side"
+  ],
+  "expect": {
+   "batches": 1,
+   "servings": 10,
+   "leftover": 0,
+   "verdict": "exact"
+  }
+ },
+ {
+  "card": "batches",
+  "args": [
+   11,
+   "side"
+  ],
+  "expect": {
+   "batches": 2,
+   "servings": 20,
+   "leftover": 9,
+   "verdict": "plenty of seconds"
+  }
+ },
+ {
+  "card": "batches",
+  "args": [
+   21,
+   "side"
+  ],
+  "expect": {
+   "batches": 3,
+   "servings": 30,
+   "leftover": 9,
+   "verdict": "plenty of seconds"
+  }
+ },
+ {
+  "card": "batches",
+  "args": [
+   12,
+   "salad"
+  ],
+  "expect": {
+   "batches": 1,
+   "servings": 12,
+   "leftover": 0,
+   "verdict": "exact"
+  }
+ },
+ {
+  "card": "batches",
+  "args": [
+   13,
+   "salad"
+  ],
+  "expect": {
+   "batches": 2,
+   "servings": 24,
+   "leftover": 11,
+   "verdict": "plenty of seconds"
+  }
+ },
+ {
+  "card": "batches",
+  "args": [
+   24,
+   "dessert"
+  ],
+  "expect": {
+   "batches": 2,
+   "servings": 24,
+   "leftover": 0,
+   "verdict": "exact"
+  }
+ },
+ {
+  "card": "batches",
+  "args": [
+   25,
+   "dessert"
+  ],
+  "expect": {
+   "batches": 3,
+   "servings": 36,
+   "leftover": 11,
+   "verdict": "plenty of seconds"
+  }
+ },
+ {
+  "card": "batches",
+  "args": [
+   100,
+   "main"
+  ],
+  "expect": {
+   "batches": 13,
+   "servings": 104,
+   "leftover": 4,
+   "verdict": "plenty of seconds"
+  }
+ },
+ {
+  "card": "batches",
+  "args": [
+   1,
+   "salad"
+  ],
+  "expect": {
+   "batches": 1,
+   "servings": 12,
+   "leftover": 11,
+   "verdict": "plenty of seconds"
+  }
+ },
+ {
+  "card": "batches",
+  "args": [
+   55,
+   "side"
+  ],
+  "expect": {
+   "batches": 6,
+   "servings": 60,
+   "leftover": 5,
+   "verdict": "plenty of seconds"
+  }
+ },
+ {
+  "card": "batches",
+  "args": [
+   0,
+   "main"
+  ],
+  "error": "positive"
+ },
+ {
+  "card": "batches",
+  "args": [
+   9,
+   "roast"
+  ],
+  "error": "dish is"
+ },
+ {
+  "card": "batches",
+  "args": [
+   2.5,
+   "main"
+  ],
+  "error": "whole numbers"
+ },
+ {
+  "card": "batches",
+  "args": [
+   250,
+   "main"
+  ],
+  "error": "under 201"
+ },
+ {
+  "card": "drinks",
+  "args": [
+   8,
+   1
+  ],
+  "expect": {
+   "drinks": 16,
+   "ice_g": 1200,
+   "verdict": "a short toast"
+  }
+ },
+ {
+  "card": "drinks",
+  "args": [
+   8,
+   2
+  ],
+  "expect": {
+   "drinks": 24,
+   "ice_g": 2400,
+   "verdict": "an evening"
+  }
+ },
+ {
+  "card": "drinks",
+  "args": [
+   8,
+   3
+  ],
+  "expect": {
+   "drinks": 40,
+   "ice_g": 3600,
+   "verdict": "an evening"
+  }
+ },
+ {
+  "card": "drinks",
+  "args": [
+   12,
+   4
+  ],
+  "expect": {
+   "drinks": 72,
+   "ice_g": 7200,
+   "verdict": "an evening"
+  }
+ },
+ {
+  "card": "drinks",
+  "args": [
+   4,
+   1
+  ],
+  "expect": {
+   "drinks": 8,
+   "ice_g": 600,
+   "verdict": "a short toast"
+  }
+ },
+ {
+  "card": "drinks",
+  "args": [
+   20,
+   5
+  ],
+  "expect": {
+   "drinks": 160,
+   "ice_g": 15000,
+   "verdict": "a long night"
+  }
+ },
+ {
+  "card": "drinks",
+  "args": [
+   6,
+   6
+  ],
+  "expect": {
+   "drinks": 54,
+   "ice_g": 5400,
+   "verdict": "a long night"
+  }
+ },
+ {
+  "card": "drinks",
+  "args": [
+   30,
+   2
+  ],
+  "expect": {
+   "drinks": 90,
+   "ice_g": 9000,
+   "verdict": "an evening"
+  }
+ },
+ {
+  "card": "drinks",
+  "args": [
+   15,
+   3
+  ],
+  "expect": {
+   "drinks": 75,
+   "ice_g": 6750,
+   "verdict": "an evening"
+  }
+ },
+ {
+  "card": "drinks",
+  "args": [
+   2,
+   12
+  ],
+  "expect": {
+   "drinks": 36,
+   "ice_g": 3600,
+   "verdict": "a long night"
+  }
+ },
+ {
+  "card": "drinks",
+  "args": [
+   50,
+   4
+  ],
+  "expect": {
+   "drinks": 300,
+   "ice_g": 30000,
+   "verdict": "an evening"
+  }
+ },
+ {
+  "card": "drinks",
+  "args": [
+   10,
+   8
+  ],
+  "expect": {
+   "drinks": 120,
+   "ice_g": 12000,
+   "verdict": "a long night"
+  }
+ },
+ {
+  "card": "drinks",
+  "args": [
+   0,
+   2
+  ],
+  "error": "positive"
+ },
+ {
+  "card": "drinks",
+  "args": [
+   8,
+   0
+  ],
+  "error": "positive"
+ },
+ {
+  "card": "drinks",
+  "args": [
+   8,
+   2.5
+  ],
+  "error": "whole numbers"
+ },
+ {
+  "card": "drinks",
+  "args": [
+   8,
+   13
+  ],
+  "error": "under 13"
+ }
+]
